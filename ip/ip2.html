@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainably Yours</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+        /* Green monochrome theme: Various shades of green */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9; /* Light green */
+            color: #0d3b0e; /* Dark green text */
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1b5e20; /* Dark green */
+            color: #e8f5e9; /* Light green text */
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: #e8f5e9;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #81c784; /* Medium green */
+        }
+
+        nav a i {
+            margin-right: 0.5rem;
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #e8f5e9;
+            margin-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #1b5e20;
+                padding: 1rem 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        #hero {
+            background: url('https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover;
+            color: #e8f5e9;
+            text-align: center;
+            padding: 10rem 2rem;
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 94, 32, 0.6); /* Green overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .hero-images {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-images img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        button {
+            background-color: #4caf50; /* Green button */
+            color: #e8f5e9;
+            border: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #2e7d32; /* Darker green */
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project {
+            background: #f1f8e9; /* Light green bg */
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .project img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .project a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            color: #0d3b0e;
+        }
+
+        #impact {
+            background-color: #c8e6c9; /* Medium green */
+            text-align: center;
+        }
+
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            flex: 1;
+            min-width: 200px;
+            margin: 1rem;
+        }
+
+        .stat i {
+            font-size: 3rem;
+            color: #1b5e20;
+        }
+
+        footer {
+            background-color: #1b5e20;
+            color: #e8f5e9;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .social-media a {
+            color: #e8f5e9;
+            margin: 0 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #81c784;
+        }
+
+        .social-media i {
+            margin-right: 0.5rem;
+        }
+
+        /* Newsletter form */
+        #newsletter {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        #newsletter form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        #newsletter input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #81c784;
+            border-radius: 5px;
+            background-color: #f1f8e9;
+        }
+
+        /* Responsive design enhancements */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            #newsletter form {
+                flex-direction: column;
+            }
+
+            .hero-images {
+                flex-direction: column;
+            }
+
+            .hero-images img {
+                width: 100%;
+                height: auto;
+            }
+
+            .impact-stats {
+                flex-direction: column;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Form styles */
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input, textarea, select {
+            padding: 0.75rem;
+            border: 1px solid #81c784;
+            border-radius: 5px;
+            background-color: #f1f8e9;
+            color: #0d3b0e;
+        }
+
+        #about p {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Enhanced news section */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-item {
+            background: #f1f8e9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .news-item a {
+            color: #4caf50;
+        }
+
+        /* Modal styles for sign in/up and donate */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #f1f8e9;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #81c784;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #0d3b0e;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #1b5e20;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Enhanced help list */
+        #involved ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        #involved ul li i {
+            font-size: 1.5rem;
+            color: #4caf50;
+            margin-right: 1rem;
+        }
+
+        #involved ul li button {
+            margin-left: auto;
+        }
+
+        /* Make all images responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body id="home">
+
+    <header>
+        <div class="logo">
+            <i class="fas fa-leaf"></i> 
+            <h1>Sustainably Yours</h1>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#projects"><i class="fas fa-seedling"></i> Projects</a></li>
+                <li><a href="#involved"><i class="fas fa-hands-helping"></i> Get Involved</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#" onclick="openModal('signinModal')"><i class="fas fa-sign-in-alt"></i> Sign In</a></li>
+                <li><a href="#" onclick="openModal('signupModal')"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="hamburger-icon"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sign In Modal -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signinModal')">&times;</span>
+            <h2>Sign In</h2>
+            <form action="mailto:ecofriendly@project.org" method="post" enctype="text/plain">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Sign Up</h2>
+            <form action="mailto:ecofriendly@project.org" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donate Modal -->
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donateModal')">&times;</span>
+            <h2>Donate Now</h2>
+            <p>Your generous donation will help fund our sustainability projects. Choose an amount or enter your own.</p>
+            <form action="mailto:ecofriendly@project.org" method="post" enctype="text/plain">
+                <select name="amount" required>
+                    <option value="">Select Amount</option>
+                    <option value="10">$10</option>
+                    <option value="25">$25</option>
+                    <option value="50">$50</option>
+                    <option value="100">$100</option>
+                    <option value="custom">Custom</option>
+                </select>
+                <input type="number" name="custom_amount" placeholder="Enter custom amount" style="display: none;">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Optional message"></textarea>
+                <button type="submit">Donate</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Join Us in Building a Greener Future</h2>
+            <p>Support our mission to protect the environment and foster sustainable communities worldwide.</p>
+            <button onclick="location.href='#involved'">Support Us</button>
+            <div class="hero-images">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nature Scene 1">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nature Scene 2">
+                <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nature Scene 3">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Our Projects</h2>
+        <p>Our initiatives aim to promote sustainability, conservation, and eco-friendly practices. Discover how our projects are making a difference around the world:</p>
+        <div class="project-grid">
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1464550883968-cec281c19761?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Community Gardening">
+                <h3>Community Gardening</h3>
+                <p>Creating local green spaces to promote biodiversity and sustainable food sources. We're active in over 50 cities, growing fresh produce for communities.</p>
+                <a href="garden.html" onclick="alert('Learn more about Community Gardening: Join our workshops to start your own garden!')">Learn more</a>
+            </div>
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1583253129894-2977ce6890c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Recycling & Upcycling">
+                <h3>Recycling & Upcycling</h3>
+                <p>Educating communities on recycling and transforming waste into valuable resources. Our programs have upcycled over 10,000 items last year.</p>
+                <a href="recycle.html" onclick="alert('Learn more about Recycling & Upcycling: Discover creative ways to reuse materials.')">Learn more</a>
+            </div>
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Renewable Energy">
+                <h3>Renewable Energy</h3>
+                <p>Implementing renewable energy sources to reduce carbon emissions in our communities. We've installed solar systems powering 500+ homes.</p>
+                <a href="energy.html" onclick="alert('Learn more about Renewable Energy: See how solar power is changing lives.')">Learn more</a>
+            </div>
+            <div class="project">
+                <img src="https://images.unsplash.com/photo-1518531933039-b4d3fb281916?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Forest Conservation">
+                <h3>Forest Conservation</h3>
+                <p>Protecting and restoring forests to combat deforestation and preserve wildlife habitats. Planted 20,000 trees in endangered areas.</p>
+                <a href="garden.html" onclick="alert('Learn more about Forest Conservation: Help us save our forests today!')">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="impact">
+        <h2>Our Impact</h2>
+        <p>See the difference we're making in the world:</p>
+        <div class="impact-stats">
+            <div class="stat">
+                <i class="fas fa-tree"></i>
+                <h3>30,000+</h3>
+                <p>Trees Planted</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-recycle"></i>
+                <h3>8,000 tons</h3>
+                <p>Waste Recycled</p>
+            </div>
+            <div class="stat">
+                <i class="fas fa-solar-panel"></i>
+                <h3>2,500+</h3>
+                <p>Solar Panels Installed</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="involved">
+        <h2>How You Can Help</h2>
+        <p>Join us in our mission by contributing in meaningful ways. Your support drives our success and helps build a sustainable future:</p>
+        <ul>
+            <li><button onclick="openModal('donateModal')"><a href="donate.html">Donate Now</a></button></li>
+            <li><i class="fas fa-donate"></i>Donate to support our projects financially. Every contribution helps fund new initiatives like tree planting and renewable energy setups. </li>
+            <li><i class="fas fa-hands-helping"></i>Volunteer in community events and eco-friendly workshops. Hands-on help makes a big difference in local conservation efforts.</li>
+            <li><i class="fas fa-bullhorn"></i>Advocate by spreading awareness about environmental issues through social media, events, and conversations.</li>
+            <li><i class="fas fa-handshake"></i>Partner with us for corporate sustainability initiatives to align your business with green goals and amplify impact.</li>
+            <li><i class="fas fa-calendar-alt"></i>Host local events or fundraisers to support our cause in your community and engage others.</li>
+        </ul>
+        <br>
+        <h3>Volunteer Sign-Up</h3>
+        <p>Become a volunteer and contribute directly to our projects. Fill out the form below to get started and join our team of changemakers:</p>
+        <form action="mailto:ecofriendly@project.org" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="location" placeholder="Your Location" required>
+            <select name="interest" required>
+                <option value="">Select Interest</option>
+                <option value="gardening">Community Gardening</option>
+                <option value="recycling">Recycling & Upcycling</option>
+                <option value="energy">Renewable Energy</option>
+                <option value="conservation">Forest Conservation</option>
+            </select>
+            <textarea name="message" placeholder="Why do you want to volunteer? Tell us about your skills." required></textarea>
+            <button type="submit"><a href="volunteer.html">Sign Up to Volunteer</a></button>
+        </form>
+    </section>
+
+    <section id="news">
+        <h2>News & Updates</h2>
+        <p>Stay informed on our latest news, achievements, and upcoming events. Check back often for updates:</p>
+        <div class="news-grid">
+            <div class="news-item">
+                <img src="https://images.unsplash.com/photo-1522885147691-5d77e42b5759?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="World Environment Day">
+                <strong>August 2025:</strong> <a href="news.html" onclick="alert('Celebrated World Environment Day with a massive tree-planting drive! Over 500 volunteers participated.')">Celebrated World Environment Day with a massive tree-planting drive!</a>
+                <p>We planted 1,000 trees in local parks, engaging the community in sustainability efforts.</p>
+            </div>
+            <div class="news-item">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Solar Project Launch">
+                <strong>October 2024:</strong> <a href="news.html" onclick="alert('Launched a new solar energy project in the community! This will power 200 homes sustainably.')">Launched a new solar energy project in the community!</a>
+                <p>Our latest initiative brings clean energy to underserved areas, reducing carbon footprints.</p>
+            </div>
+            <div class="news-item">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cleanup Day">
+                <strong>September 2024:</strong> <a href="news.html" onclick="alert('Our annual community cleanup day was a success, thanks to all volunteers! Collected over 2 tons of waste.')">Our annual community cleanup day was a success, thanks to all volunteers!</a>
+                <p>Volunteers collected tons of waste, making our neighborhoods cleaner and greener.</p>
+            </div>
+            <div class="news-item">
+                <img src="https://images.unsplash.com/photo-1503443207921-75f962d70133?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Partnership">
+                <strong>July 2024:</strong> <a href="news.html" onclick="alert('Partnered with local schools for environmental education workshops.')">Partnered with local schools for environmental education workshops.</a>
+                <p>Educating the next generation on sustainability through interactive sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a dedicated non-profit organization focused on promoting environmental sustainability through community-driven projects. Founded in 2020, our team of passionate volunteers and experts works tirelessly to create a greener planet for future generations. Our vision is a world where nature thrives alongside human progress.</p>
+        <p>Our core values include innovation, community engagement, and transparency. We believe in empowering individuals to make a difference. Join our growing community of over 5,000 supporters worldwide!</p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Our Team" style="border-radius: 8px;">
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:ecofriendly@project.org">ecofriendly@project.org</a> | Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+            </div>
+            <div class="social-media">
+                <a href="https://facebook.com"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://instagram.com"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+            <div class="footer-links">
+                <p><a href="#contact" onclick="alert('Privacy Policy: We respect your privacy and do not share your data.')">Privacy Policy</a></p>
+            </div>
+        </div>
+        <div id="newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <form action="mailto:ecofriendly@project.org" method="post" enctype="text/plain">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <p>&copy; 2025 Eco-Friendly Projects. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Hamburger menu toggle with icon change
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            const icon = document.getElementById('hamburger-icon');
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+
+        // Show custom amount input if selected
+        document.querySelector('select[name="amount"]').addEventListener('change', function() {
+            const customInput = document.querySelector('input[name="custom_amount"]');
+            if (this.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
